@@ -36,10 +36,10 @@ h1 {
 }
 
 /* ===== Selection ===== */
-::selection {
-  background: var(--accent-clr);
-  color: var(--text-clr);
-}
+// ::selection {
+//   background: var(--accent-clr);
+//   color: var(--text-clr);
+// }
 
 /* ===== Scrollbar ===== */
 ::-webkit-scrollbar {
