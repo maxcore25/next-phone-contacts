@@ -1,0 +1,12 @@
+:root {
+  --grid-column: 4;
+  --max-width: 1200px;
+  --header-height: 90px;
+  --border-radius-1: 16px;
+  --border-radius-2: 12px;
+
+  --font-primary: sans-serif;
+
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-height) + 8px);
+}

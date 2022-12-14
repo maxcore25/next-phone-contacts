@@ -1,0 +1,14 @@
+@use '../abstracts/mixins' as m;
+
+body {
+  color: var(--text-clr);
+  background-color: var(--bg-clr-primary);
+  font-family: var(--font-primary);
+  -webkit-font-smoothing: antialiased;
+  // font-size: clamp(14px, 10px + 1vmin, 16px);
+  font-size: 14px;
+
+  @include m.mq(desktop) {
+    font-size: 16px;
+  }
+}

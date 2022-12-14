@@ -1,0 +1,47 @@
+@use './breakpoints' as b;
+
+@mixin mq($key) {
+  $screen-size: map-get(b.$breakpoints, $key);
+
+  @media only screen and (min-width: $screen-size) {
+    @content;
+  }
+}
+
+@mixin separator-styles($position: 'bottom') {
+  content: '';
+  position: absolute;
+  @if $position == 'bottom' {
+    bottom: 0;
+    background: var(--text-clr);
+  } @else if $position == 'top' {
+    top: 0;
+    background: var(--gray-10-clr);
+  }
+  left: 50%;
+  height: 1px;
+  opacity: 0.5;
+  transform: translateX(-50%);
+}
+
+@mixin section-separator($type: '', $position: 'bottom') {
+  &::after {
+    @if $type == 'disposal' {
+      @include mq(desktop) {
+        @include separator-styles($position);
+
+        width: 100%;
+        max-width: var(--max-width);
+      }
+    } @else {
+      @include separator-styles($position);
+
+      width: calc(100% - (16px * 2));
+
+      @include mq(desktop) {
+        width: 100%;
+        max-width: var(--max-width);
+      }
+    }
+  }
+}
