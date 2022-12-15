@@ -24,18 +24,21 @@ export default async function handler(
 
     res.status(200).json(savedContact);
   } else if (req.method === 'PATCH') {
+    const { id } = req.query;
     const contactData = JSON.parse(req.body);
 
     const savedContact = await prisma.contact.update({
       data: contactData,
-      where: contactData.id,
+      where: { id: Number(id) },
     });
 
     res.status(200).json(savedContact);
   } else if (req.method === 'DELETE') {
-    const contactId = JSON.parse(req.body);
+    const { id } = req.query;
 
-    const deletedContact = await prisma.contact.delete({ where: contactId });
+    const deletedContact = await prisma.contact.delete({
+      where: { id: Number(id) },
+    });
 
     res.status(200).json(deletedContact);
   }
