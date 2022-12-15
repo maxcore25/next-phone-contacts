@@ -23,7 +23,7 @@ const ContactsLists = () => {
         {contacts?.map(contact => (
           <Paper key={contact.id} elevation={3} sx={{ padding: '16px' }}>
             <Typography variant='h6' component='h6' sx={{ fontWeight: 'bold' }}>
-              {contact.email}
+              {contact.name}
             </Typography>
             <Typography>{contact.email}</Typography>
           </Paper>
