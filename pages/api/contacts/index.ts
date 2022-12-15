@@ -8,18 +8,21 @@ export default async function handler(
   res: NextApiResponse<Contact | Contact[] | null | { message: string }>
 ) {
   if (req.method === 'GET') {
-    const contacts = await prisma.contact.findMany();
-
-    res.status(200).json(contacts);
+    try {
+      const contacts = await prisma.contact.findMany();
+      res.status(200).json(contacts);
+    } catch {
+      res.status(500).json({ message: 'Server side error' });
+    }
   } else if (req.method === 'POST') {
     const contactData = req.body;
 
     try {
-      const contacts = await prisma.contact.create({ data: contactData });
+      await prisma.contact.create({ data: contactData });
 
       res.status(200).json({ message: 'OK' });
-    } catch (error) {
-      res.status(500).json({ message: error as string });
+    } catch {
+      res.status(500).json({ message: 'Server side error' });
     }
   }
 }
