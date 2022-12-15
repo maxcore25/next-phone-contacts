@@ -1,10 +1,10 @@
-import MainHeader from '@/modules/headers/MainHeader';
+import MainHead from '@/components/elements/heads/MainHead';
 import HomeSection from '@/components/modules/sections/HomeSection';
 
 const LandingLayout = () => {
   return (
     <>
-      <MainHeader />
+      <MainHead />
       <HomeSection />
     </>
   );
