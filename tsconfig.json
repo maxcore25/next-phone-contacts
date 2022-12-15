@@ -17,6 +17,8 @@
     "baseUrl": ".",
     "paths": {
       "@/assets/*": ["app/assets/*"],
+      "@/api": ["app/api"],
+      "@/api/*": ["app/api/*"],
       "@/components": ["app/components"],
       "@/components/*": ["app/components/*"],
       "@/elements": ["app/components/elements"],
