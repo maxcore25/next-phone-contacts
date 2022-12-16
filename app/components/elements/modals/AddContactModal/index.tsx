@@ -4,6 +4,7 @@ import { Button, Stack, TextField } from '@mui/material';
 import { IContact } from '@/types';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { addContact } from '@/api/contactsApi';
+import { modalStore } from '@/store/modalStore';
 
 type ActionType = 'NAME' | 'EMAIL' | 'PHONE_MOBILE' | 'PHONE_HOME' | 'RESET';
 
@@ -45,18 +46,19 @@ const AddContactModal = () => {
     },
   });
 
-  const handleAddContact = () => {
+  const handleCloseModal = () => {
+    modalStore.isOpen = false;
+    dispatch({ type: 'RESET' });
+  };
+
+  const handleSubmit = () => {
     addTodoMutation.mutate(state);
     dispatch({ type: 'RESET' });
   };
 
-  const handleCloseModal = () => {
-    dispatch({ type: 'RESET' });
-  };
-
   return (
-    <BaseModal open={true}>
-      <Stack component='form' sx={{ gap: '32px' }}>
+    <BaseModal open={modalStore.isOpen} onClose={handleCloseModal}>
+      <Stack component='form' onSubmit={handleSubmit} sx={{ gap: '32px' }}>
         <Stack>
           <TextField
             type='text'
@@ -103,7 +105,7 @@ const AddContactModal = () => {
           <Button variant='outlined' color='error' onClick={handleCloseModal}>
             Close
           </Button>
-          <Button type='submit' variant='contained' onClick={handleAddContact}>
+          <Button type='submit' variant='contained'>
             Create
           </Button>
         </Stack>
