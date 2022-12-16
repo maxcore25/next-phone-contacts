@@ -1,8 +1,9 @@
 import { useReducer } from 'react';
 import BaseModal from '../BaseModal';
-import { contactStore } from '@/store';
 import { Button, Stack, TextField } from '@mui/material';
 import { IContact } from '@/types';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { addContact } from '@/api/contactsApi';
 
 type ActionType = 'NAME' | 'EMAIL' | 'PHONE_MOBILE' | 'PHONE_HOME' | 'RESET';
 
@@ -36,9 +37,18 @@ const reducer = (state: State, action: Action): State => {
 
 const AddContactModal = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const queryClient = useQueryClient();
+
+  const addTodoMutation = useMutation(addContact, {
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['contacts'] });
+    },
+  });
 
   const handleAddContact = () => {
     console.log(state);
+    addTodoMutation.mutate(state);
+    dispatch({ type: 'RESET' });
   };
 
   const handleCloseModal = () => {
@@ -94,7 +104,7 @@ const AddContactModal = () => {
           <Button variant='outlined' color='error' onClick={handleCloseModal}>
             Close
           </Button>
-          <Button variant='contained' onClick={handleAddContact}>
+          <Button type='submit' variant='contained' onClick={handleAddContact}>
             Create
           </Button>
         </Stack>
