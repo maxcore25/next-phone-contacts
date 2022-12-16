@@ -10,7 +10,13 @@ npm i
 yarn
 ```
 
-2. Run dev server:
+2. Create `.env` file (read more in Prisma ORM documentation):
+
+```bash
+DATABASE_URL="your:path/to/db"
+```
+
+3. Run dev server:
 
 ```bash
 npm run dev
@@ -18,7 +24,7 @@ npm run dev
 yarn dev
 ```
 
-3. All CRUD operations are available using following endpoints:
+4. All CRUD operations are available using following endpoints:
 
    - `api/contacts` - GET and POST methods
    - `api/contacts/{id}` - PUT and DELETE methods
