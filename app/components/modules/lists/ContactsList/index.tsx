@@ -5,7 +5,7 @@ import { getContacts } from '@/api/contactsApi';
 import { Contact } from '@prisma/client';
 import ContactCard from '@/components/elements/cards/ContactCard';
 
-const ContactsLists = () => {
+const ContactsList = () => {
   const [newTodo, setNewTodo] = useState('');
 
   const {
@@ -32,4 +32,4 @@ const ContactsLists = () => {
   );
 };
 
-export default ContactsLists;
+export default ContactsList;

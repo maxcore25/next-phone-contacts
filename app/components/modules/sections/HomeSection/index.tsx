@@ -1,6 +1,6 @@
 import { Stack } from '@mui/system';
 import ContactForm from '../../forms/ContactForm';
-import ContactsLists from '../../lists/ContactsLists';
+import ContactsList from '../../lists/ContactsList';
 
 const HomeSection = () => {
   return (
@@ -20,7 +20,7 @@ const HomeSection = () => {
           display: 'grid',
           gridTemplateColumns: '1fr 1fr',
         }}>
-        <ContactsLists />
+        <ContactsList />
         <ContactForm />
       </Stack>
     </Stack>
