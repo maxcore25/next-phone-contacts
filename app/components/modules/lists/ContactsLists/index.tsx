@@ -3,6 +3,7 @@ import { Button, Stack, Paper, Typography } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
 import { getContacts } from '@/api/contactsApi';
 import { Contact } from '@prisma/client';
+import ContactCard from '@/components/elements/cards/ContactCard';
 
 const ContactsLists = () => {
   const [newTodo, setNewTodo] = useState('');
@@ -21,12 +22,7 @@ const ContactsLists = () => {
       </Typography>
       <Stack sx={{ gap: '32px' }}>
         {contacts?.map(contact => (
-          <Paper key={contact.id} elevation={3} sx={{ padding: '16px' }}>
-            <Typography variant='h6' component='h6' sx={{ fontWeight: 'bold' }}>
-              {contact.name}
-            </Typography>
-            <Typography>{contact.email}</Typography>
-          </Paper>
+          <ContactCard key={contact.id} contact={contact} />
         ))}
       </Stack>
       <Button variant='contained' sx={{ width: 'fit-content' }}>
