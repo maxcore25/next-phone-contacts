@@ -13,7 +13,10 @@ const ContactCard = ({ contact }: IProps) => {
   };
 
   return (
-    <Paper elevation={3} sx={{ padding: '16px' }} onClick={handleClick}>
+    <Paper
+      elevation={3}
+      sx={{ padding: '16px', cursor: 'pointer' }}
+      onClick={handleClick}>
       <Typography variant='h6' component='h6' sx={{ fontWeight: 'bold' }}>
         {contact.name}
       </Typography>
