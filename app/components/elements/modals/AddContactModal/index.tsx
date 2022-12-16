@@ -4,8 +4,9 @@ import { Button, Stack, TextField } from '@mui/material';
 import { IContact } from '@/types';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { addContact } from '@/api/contactsApi';
-import { modalStore } from '@/store/modalStore';
+import { modalStore } from '@/store';
 import { observer } from 'mobx-react-lite';
+import { QUERY_KEYS } from '@/constants';
 
 type ActionType = 'NAME' | 'EMAIL' | 'PHONE_MOBILE' | 'PHONE_HOME' | 'RESET';
 
@@ -43,7 +44,7 @@ const AddContactModal = () => {
 
   const addTodoMutation = useMutation(addContact, {
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['contacts'] });
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.CONTACTS] });
     },
   });
 

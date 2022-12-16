@@ -1,21 +1,17 @@
-import { useState } from 'react';
-import { Button, Stack, Paper, Typography } from '@mui/material';
+import { Button, Stack, Typography } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
 import { getContacts } from '@/api/contactsApi';
 import { Contact } from '@prisma/client';
 import ContactCard from '@/components/elements/cards/ContactCard';
-import { modalStore } from '@/store/modalStore';
+import { modalStore } from '@/store';
 import { observer } from 'mobx-react-lite';
+import { QUERY_KEYS } from '@/constants';
 
 const ContactsList = () => {
-  const [newTodo, setNewTodo] = useState('');
-
-  const {
-    isLoading,
-    isError,
-    error,
-    data: contacts,
-  } = useQuery<Contact[]>({ queryKey: ['contacts'], queryFn: getContacts });
+  const { data: contacts } = useQuery<Contact[]>({
+    queryKey: [QUERY_KEYS.CONTACTS],
+    queryFn: getContacts,
+  });
 
   const handleOpenModal = () => {
     modalStore.isOpen = true;
