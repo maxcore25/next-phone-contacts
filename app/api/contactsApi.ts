@@ -1,16 +1,16 @@
 import axios from '@/api';
-import { Contact } from '@prisma/client';
+import { IContact } from '@/types';
 
 export const getContacts = async () => {
   const response = await axios.get('/contacts');
   return response.data;
 };
 
-export const addContact = async (contact: Contact) => {
+export const addContact = async (contact: IContact) => {
   return await axios.post('/contacts', contact);
 };
 
-export const updateContact = async (contact: Contact) => {
+export const updateContact = async (contact: IContact) => {
   return await axios.put(`/contacts/${contact.id}`, contact);
 };
 
