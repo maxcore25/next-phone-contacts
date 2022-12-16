@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import { getContacts } from '@/api/contactsApi';
 import { Contact } from '@prisma/client';
 import ContactCard from '@/components/elements/cards/ContactCard';
-import { modalStore } from '@/store/modalStore';
+import { modalStore } from '@/store';
 import { observer } from 'mobx-react-lite';
 
 const ContactsList = () => {
