@@ -1,0 +1,58 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ===== Small Common Styles ===== */
+a {
+  text-decoration: none;
+  color: currentColor;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  font-size: 1rem;
+  font-family: var(--font-primary);
+  color: var(--text-clr);
+  background: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+input {
+  color: var(--text-clr);
+  outline: none;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+/* ===== Selection ===== */
+// ::selection {
+//   background: var(--accent-clr);
+//   color: var(--text-clr);
+// }
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 9px;
+  background: none;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-clr);
+  border-radius: 6px;
+
+  &:hover {
+    background: var(--accent-clr-200);
+  }
+}
