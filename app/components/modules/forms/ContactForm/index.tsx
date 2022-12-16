@@ -1,4 +1,4 @@
-import { updateContact } from '@/api/contactsApi';
+import { deleteContact, updateContact } from '@/api/contactsApi';
 import { contactStore } from '@/store';
 import { Button, Stack, TextField, Typography } from '@mui/material';
 import { Contact } from '@prisma/client';
@@ -10,7 +10,12 @@ const ContactForm = () => {
 
   const updateTodoMutation = useMutation(updateContact, {
     onSuccess: () => {
-      // Invalidates cache and refetch
+      queryClient.invalidateQueries({ queryKey: ['contacts'] });
+    },
+  });
+
+  const deleteTodoMutation = useMutation(deleteContact, {
+    onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['contacts'] });
     },
   });
@@ -20,7 +25,9 @@ const ContactForm = () => {
   };
 
   const handleDeleteContact = () => {
-    console.log(contactStore.selectedContact);
+    deleteTodoMutation.mutate({
+      id: contactStore.selectedContact.id as number,
+    });
   };
 
   return (
