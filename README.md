@@ -26,3 +26,9 @@ yarn dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ## Images
+
+![Main page](docs/main-page.png)
+
+![Select a contact item](docs/select-contact.png)
+
+![Add a new contact item](docs/add-contact.png)
