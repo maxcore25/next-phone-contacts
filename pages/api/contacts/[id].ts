@@ -5,35 +5,47 @@ const prisma = new PrismaClient();
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Contact | Contact[] | null>
+  res: NextApiResponse<Contact | Contact[] | null | { message: string }>
 ) {
   if (req.method === 'GET') {
-    const { id } = req.query;
+    try {
+      const { id } = req.query;
 
-    const contact = await prisma.contact.findUnique({
-      where: {
-        id: Number(id),
-      },
-    });
+      const contact = await prisma.contact.findUnique({
+        where: {
+          id: Number(id),
+        },
+      });
 
-    res.status(200).json(contact);
+      res.status(200).json(contact);
+    } catch {
+      res.status(500).json({ message: 'Server side error' });
+    }
   } else if (req.method === 'PUT') {
-    const { id } = req.query;
-    const contactData = req.body;
+    try {
+      const { id } = req.query;
+      const contactData = req.body;
 
-    const savedContact = await prisma.contact.update({
-      data: contactData,
-      where: { id: Number(id) },
-    });
+      const savedContact = await prisma.contact.update({
+        data: contactData,
+        where: { id: Number(id) },
+      });
 
-    res.status(200).json(savedContact);
+      res.status(200).json(savedContact);
+    } catch {
+      res.status(500).json({ message: 'Server side error' });
+    }
   } else if (req.method === 'DELETE') {
-    const { id } = req.query;
+    try {
+      const { id } = req.query;
 
-    const deletedContact = await prisma.contact.delete({
-      where: { id: Number(id) },
-    });
+      const deletedContact = await prisma.contact.delete({
+        where: { id: Number(id) },
+      });
 
-    res.status(200).json(deletedContact);
+      res.status(200).json(deletedContact);
+    } catch {
+      res.status(500).json({ message: 'Server side error' });
+    }
   }
 }
