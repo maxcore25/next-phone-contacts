@@ -33,8 +33,8 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Images
 
-![Main page](docs/main-page.png)
+![Main page](docs/img/main-page.png)
 
-![Select a contact item](docs/select-contact.png)
+![Select a contact item](docs/img/select-contact.png)
 
-![Add a new contact item](docs/add-contact.png)
+![Add a new contact item](docs/img/add-contact.png)
