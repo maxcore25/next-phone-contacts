@@ -29,6 +29,12 @@ const ContactForm = () => {
     deleteTodoMutation.mutate({
       id: contactStore.selectedContact.id as number,
     });
+    contactStore.selectedContact = {
+      name: '',
+      email: '',
+      phone_mobile: '',
+      phone_home: '',
+    };
   };
 
   return (
