@@ -54,6 +54,7 @@ const AddContactModal = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    modalStore.isOpen = false;
     addTodoMutation.mutate(state);
     dispatch({ type: 'RESET' });
   };
