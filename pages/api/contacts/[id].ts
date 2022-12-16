@@ -17,9 +17,9 @@ export default async function handler(
     });
 
     res.status(200).json(contact);
-  } else if (req.method === 'PATCH') {
+  } else if (req.method === 'PUT') {
     const { id } = req.query;
-    const contactData = JSON.parse(req.body);
+    const contactData = req.body;
 
     const savedContact = await prisma.contact.update({
       data: contactData,

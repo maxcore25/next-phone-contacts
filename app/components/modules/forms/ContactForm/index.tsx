@@ -1,6 +1,7 @@
 import { updateContact } from '@/api/contactsApi';
 import { contactStore } from '@/store';
 import { Button, Stack, TextField, Typography } from '@mui/material';
+import { Contact } from '@prisma/client';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { observer } from 'mobx-react-lite';
 
@@ -15,7 +16,7 @@ const ContactForm = () => {
   });
 
   const handleUpdateContact = () => {
-    console.log(contactStore.selectedContact);
+    updateTodoMutation.mutate(contactStore.selectedContact as Contact);
   };
 
   const handleDeleteContact = () => {
