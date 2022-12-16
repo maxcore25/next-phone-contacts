@@ -46,7 +46,6 @@ const AddContactModal = () => {
   });
 
   const handleAddContact = () => {
-    console.log(state);
     addTodoMutation.mutate(state);
     dispatch({ type: 'RESET' });
   };
