@@ -51,7 +51,8 @@ const AddContactModal = () => {
     dispatch({ type: 'RESET' });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     addTodoMutation.mutate(state);
     dispatch({ type: 'RESET' });
   };
@@ -79,7 +80,8 @@ const AddContactModal = () => {
             required
           />
           <TextField
-            type='text'
+            type='tel'
+            inputProps={{ pattern: '\\+(\\d{1,50})' }}
             variant='outlined'
             label='Mobile phone'
             margin='normal'
@@ -90,7 +92,8 @@ const AddContactModal = () => {
             required
           />
           <TextField
-            type='text'
+            type='tel'
+            inputProps={{ pattern: '\\+(\\d{1,50})' }}
             variant='outlined'
             label='Home phone'
             margin='normal'
