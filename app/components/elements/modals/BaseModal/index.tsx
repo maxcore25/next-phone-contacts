@@ -22,7 +22,7 @@ const BaseModal = ({ children, open, onClose }: IProps) => {
           left: '50%',
           transform: 'translate(-50%, -50%)',
           width: '100%',
-          maxWidth: '1200px',
+          maxWidth: '500px',
           background: '#fff',
           borderRadius: '16px',
           p: 4,
