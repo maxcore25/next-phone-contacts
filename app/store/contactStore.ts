@@ -1,7 +1,7 @@
 import { IContact } from '@/types';
 import { makeAutoObservable } from 'mobx';
 
-export class ContactStore {
+class ContactStore {
   selectedContact: IContact = {
     name: '',
     email: '',
@@ -15,5 +15,8 @@ export class ContactStore {
 
   selectContact(contact: IContact) {
     this.selectedContact = contact;
+    console.log(this.selectedContact);
   }
 }
+
+export const contactStore = new ContactStore();
