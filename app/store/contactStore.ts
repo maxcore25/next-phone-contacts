@@ -15,7 +15,6 @@ class ContactStore {
 
   selectContact(contact: IContact) {
     this.selectedContact = contact;
-    console.log(this.selectedContact);
   }
 }
 
