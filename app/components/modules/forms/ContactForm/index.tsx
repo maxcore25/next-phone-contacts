@@ -20,7 +20,8 @@ const ContactForm = () => {
     },
   });
 
-  const handleUpdateContact = () => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     updateTodoMutation.mutate(contactStore.selectedContact as Contact);
   };
 
@@ -35,16 +36,19 @@ const ContactForm = () => {
       <Typography variant='h4' component='h2' sx={{ fontWeight: 'bold' }}>
         Contact details
       </Typography>
-      <Stack component='form' sx={{ gap: '32px' }}>
+      <Stack component='form' onSubmit={handleSubmit} sx={{ gap: '32px' }}>
         <Stack>
           <TextField
+            type='text'
             variant='outlined'
             label='Name'
             margin='normal'
             value={contactStore.selectedContact.name}
             onChange={e => (contactStore.selectedContact.name = e.target.value)}
+            required
           />
           <TextField
+            type='email'
             variant='outlined'
             label='Email'
             margin='normal'
@@ -52,8 +56,11 @@ const ContactForm = () => {
             onChange={e =>
               (contactStore.selectedContact.email = e.target.value)
             }
+            required
           />
           <TextField
+            type='tel'
+            inputProps={{ pattern: '\\+(\\d{1,50})' }}
             variant='outlined'
             label='Mobile phone'
             margin='normal'
@@ -61,8 +68,11 @@ const ContactForm = () => {
             onChange={e =>
               (contactStore.selectedContact.phone_mobile = e.target.value)
             }
+            required
           />
           <TextField
+            type='tel'
+            inputProps={{ pattern: '\\+(\\d{1,50})' }}
             variant='outlined'
             label='Home phone'
             margin='normal'
@@ -70,13 +80,11 @@ const ContactForm = () => {
             onChange={e =>
               (contactStore.selectedContact.phone_home = e.target.value)
             }
+            required
           />
         </Stack>
         <Stack direction='row' sx={{ gap: '16px' }}>
-          <Button
-            variant='contained'
-            color='secondary'
-            onClick={handleUpdateContact}>
+          <Button type='submit' variant='contained' color='secondary'>
             Update
           </Button>
           <Button
