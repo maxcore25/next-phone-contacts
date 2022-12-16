@@ -7,7 +7,7 @@ interface IProps {
   contact: IContact;
 }
 
-const ContactCard = observer(({ contact }: IProps) => {
+const ContactCard = ({ contact }: IProps) => {
   const handleClick = () => {
     contactStore.selectContact(contact);
   };
@@ -20,6 +20,6 @@ const ContactCard = observer(({ contact }: IProps) => {
       <Typography>{contact.email}</Typography>
     </Paper>
   );
-});
+};
 
-export default ContactCard;
+export default observer(ContactCard);
