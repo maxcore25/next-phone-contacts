@@ -1,8 +1,19 @@
+import { updateContact } from '@/api/contactsApi';
 import { contactStore } from '@/store';
 import { Button, Stack, TextField, Typography } from '@mui/material';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { observer } from 'mobx-react-lite';
 
 const ContactForm = () => {
+  const queryClient = useQueryClient();
+
+  const updateTodoMutation = useMutation(updateContact, {
+    onSuccess: () => {
+      // Invalidates cache and refetch
+      queryClient.invalidateQueries({ queryKey: ['contacts'] });
+    },
+  });
+
   const handleUpdateContact = () => {
     console.log(contactStore.selectedContact);
   };
