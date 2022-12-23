@@ -23,6 +23,47 @@ paths:
                 type: integer
                 format: int32
 
+components:
+  schemas:
+    Contact:
+      type: object
+      required: 
+        - id
+        - name
+        - email
+        - phone_mobile
+        - phone_home
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: 'John Doe'
+        email:
+          type: string
+          example: 'john@test.com'
+        phone_mobile:
+          type: string
+          example: '+12345'
+          format: \+(\d{1,50})
+        phone_home:
+          type: string
+          example: '+12345'
+          format: \+(\d{1,50})
+    Contacts:
+      type: array
+      items:
+        $ref: '#/components/schemas/Contact'
+    Error:
+      type: object
+      required:
+        - message
+      properties:
+        message:
+          type: string
+          example: Server side error
+
 # paths:
 #   /devices:
 #     get:
