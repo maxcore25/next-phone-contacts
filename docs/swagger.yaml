@@ -20,8 +20,7 @@ paths:
           content:
             application/json:
               schema:
-                type: integer
-                format: int32
+                $ref: "#/components/schemas/Contacts"
         'default':
           description: All the rest of methods
           content:
