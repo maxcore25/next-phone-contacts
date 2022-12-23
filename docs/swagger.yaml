@@ -22,6 +22,12 @@ paths:
               schema:
                 type: integer
                 format: int32
+        'default':
+          description: All the rest of methods
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
 
 components:
   schemas:
