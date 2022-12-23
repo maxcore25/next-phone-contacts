@@ -10,6 +10,7 @@ info:
 paths:
   /contacts:
     get:
+      summary: Get contacts
       tags:
         - Contacts
       description: contacts endpoint
@@ -51,6 +52,52 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+
+  /contacts/{id}:
+    put:
+      summary: Update a contact
+      tags:
+        - Contacts
+      description: contacts endpoint
+      operationId: updateContact
+      responses:
+        '200':
+          description: "Updates a contact by ID"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Contacts"
+        'default':
+          description: All the rest of methods
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      summary: Delete a contact
+      tags:
+        - Contacts
+      operationId: createContact
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Contact"
+      responses:
+        '200':
+          description: Successful response with a new toy
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Contact"
+        'default':
+          description: All the rest of methods
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
 
 components:
   schemas:
