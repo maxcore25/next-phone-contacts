@@ -28,6 +28,30 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+    post:
+      summary: Create a new contact
+      tags:
+        - Contacts
+      operationId: createContact
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Contact"
+      responses:
+        '200':
+          description: Successful response with a new toy
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Contact"
+        'default':
+          description: All the rest of methods
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
 
 components:
   schemas:
