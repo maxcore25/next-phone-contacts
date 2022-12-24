@@ -24,17 +24,25 @@ npm run dev
 yarn dev
 ```
 
-4. All CRUD operations are available using following endpoints:
+All CRUD operations are available using following endpoints:
 
-   - `api/contacts` - GET and POST methods
-   - `api/contacts/{id}` - PUT and DELETE methods
+- `api/contacts` - GET and POST methods
+- `api/contacts/{id}` - PUT and DELETE methods
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ## Images
+
+Some preview images.
 
 ![Main page](docs/img/main-page.png)
 
 ![Select a contact item](docs/img/select-contact.png)
 
 ![Add a new contact item](docs/img/add-contact.png)
+
+## Swagger
+
+You can read a Swagger API documentation in `docs/swagger.yaml` ([go to file](docs/swagger.yaml)).
+
+![Swagger API documentation](docs/img/swagger.png)
